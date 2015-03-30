@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ro.pub.cs.systems.pdsd.practicaltest01.PracticalTest01MainActivity" 
-    android:saveEnabled="false">
+    >
     
     <GridLayout
         android:rowCount="1"
@@ -25,6 +25,7 @@
             android:layout_row="0"
             android:enabled="false"
             android:gravity="center"
+            android:saveEnabled="false"
             android:text="0" />
 
         <EditText
@@ -35,7 +36,8 @@
             android:layout_gravity="top"
             android:layout_row="0"
             android:enabled="false"
-            android:gravity="center" 
+            android:gravity="center"
+            android:saveEnabled="false" 
             android:text="0"
             />
         
@@ -64,5 +66,13 @@
         android:text="Press Me, Too!" />
 
     </GridLayout>
+    
+    <Button
+        android:id="@+id/buton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:text="Next App" />
 
 </LinearLayout>

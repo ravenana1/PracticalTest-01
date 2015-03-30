@@ -1,6 +1,7 @@
 package ro.pub.cs.systems.pdsd.practicaltest01;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class PracticalTest01MainActivity extends Activity {
 	
 	private Button button1;
 	private Button button2;
+	private Button button3;
 	private EditText text1;
 	private EditText text2;
 	
@@ -40,6 +43,20 @@ public class PracticalTest01MainActivity extends Activity {
 				numar++;
 				text2.setText(String.valueOf(numar));
 			}
+			else if(button3.equals((Button)v)){
+				System.out.println("e butonul 3");
+				text1 = (EditText)findViewById(R.id.text1);
+				text2 = (EditText)findViewById(R.id.text2);
+				
+				Intent intent = new Intent("ro.pub.cs.systems.pdsd.intent.action.PracticalTest01SecondaryActivity");
+		          intent.putExtra("numar_click",
+		            String.valueOf(
+		              Integer.parseInt(text1.getText().toString())
+		              + Integer.parseInt(text2.getText().toString())
+		            ));
+		          startActivityForResult(intent, 10);
+			}
+			
 		}
 	}
 	
@@ -51,10 +68,17 @@ public class PracticalTest01MainActivity extends Activity {
         
         button1 = (Button) findViewById(R.id.buton1);
         button2 = (Button) findViewById(R.id.buton2);
+        button3 = (Button) findViewById(R.id.buton3);
        
         
         button1.setOnClickListener(viewClickListener);
         button2.setOnClickListener(viewClickListener);
+        button3.setOnClickListener(viewClickListener);
+    }
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+      Toast.makeText(this, "The activity returned with result "+resultCode, Toast.LENGTH_LONG).show();
     }
     
     @Override
